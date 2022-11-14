@@ -1,6 +1,6 @@
 /*
-See LICENSE folder for this sample’s licensing information.
-*/
+ See LICENSE folder for this sample’s licensing information.
+ */
 
 import UIKit
 
@@ -22,10 +22,15 @@ extension ReminderListViewController {
         viewController.navigationItem.title = NSLocalizedString("Add Reminder", comment: "Add Reminder view controller title")
         let navigationController = UINavigationController(rootViewController: viewController)
         present(navigationController, animated: true)
-       }
+    }
     
     @objc func didCancelAdd(_ sender: UIBarButtonItem) {
-         dismiss(animated: true)
-     }
+        dismiss(animated: true)
+    }
+    @objc func didChangeListStyle(_ sender: UISegmentedControl) {
+        listStyle = ReminderListStyle(rawValue: sender.selectedSegmentIndex) ?? .today
+        updateSnapshot()
+    }
 }
+
 
